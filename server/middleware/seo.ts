@@ -59,6 +59,12 @@ export default async function seoMiddleware(
   if (method !== "GET" && method !== "HEAD") return next();
   const path = event.url.pathname;
 
+  if (path === "/googleef16ab6d67159605.html") {
+    return new Response("google-site-verification: googleef16ab6d67159605.html", {
+      headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" },
+    });
+  }
+
   if (path === `/${INDEXNOW_KEY}.txt`) {
     return new Response(INDEXNOW_KEY, {
       headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" },
