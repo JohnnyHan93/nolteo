@@ -65,6 +65,12 @@ export default async function seoMiddleware(
     });
   }
 
+  if (path === "/naver1de2ef086604247f55323952c494f677.html") {
+    return new Response("naver-site-verification: naver1de2ef086604247f55323952c494f677.html", {
+      headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-cache" },
+    });
+  }
+
   if (path === `/${INDEXNOW_KEY}.txt`) {
     return new Response(INDEXNOW_KEY, {
       headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" },
