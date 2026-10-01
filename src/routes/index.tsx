@@ -59,7 +59,7 @@ function Home() {
           </div>
         </div>
         <aside className="hero-side">
-          <img src="/mark.jpg" alt="놀터 마크" width={784} height={1168} />
+          <div className="logo-plate" aria-label="놀터">놀터</div>
           <div>
             <b>오늘의 1위</b>
             <div className="lead">{lead?.title ?? "아직 없어요"}</div>

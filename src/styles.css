@@ -57,22 +57,25 @@
 }
 
 .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; min-height: 2.75rem; }
-.brand img {
-  width: 2.75rem;
-  height: 2.75rem;
-  object-fit: cover;
-  object-position: center 42%;
-  border-radius: 0.55rem;
-  border: 2px solid var(--color-primary);
-}
-.brand strong {
+.logo {
+  display: grid;
+  place-items: center;
+  height: 2.6rem;
+  padding: 0 0.7rem 0.08rem;
+  border-radius: 0.7rem;
+  background: var(--color-primary);
+  color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  letter-spacing: -0.04em;
+  font-size: 1.55rem;
   line-height: 1;
-  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
 }
-.brand span { display: block; margin-top: 0.15rem; font-size: 0.75rem; color: color-mix(in srgb, var(--color-fg) 68%, var(--color-bg)); }
+.logo-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--color-fg) 68%, var(--color-bg));
+}
 
 .nav {
   display: flex;
@@ -168,13 +171,18 @@
   flex-direction: column;
   gap: 0.75rem;
 }
-.hero-side img {
+.logo-plate {
+  display: grid;
+  place-items: center;
   width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  object-position: center 40%;
+  aspect-ratio: 1.15;
   border-radius: 0.9rem;
-  border: 2px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  line-height: 1;
+  letter-spacing: 0;
 }
 .hero-side b {
   font-family: var(--font-display);

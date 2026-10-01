@@ -17,11 +17,8 @@ export function Shell({ children }: { children: ReactNode }) {
     <div className="shell">
       <header className="top">
         <Link to="/" className="brand">
-          <img src="/mark.jpg" alt="" width={784} height={1168} />
-          <div>
-            <strong>놀터</strong>
-            <span>심심할 때 들르는 곳</span>
-          </div>
+          <span className="logo">놀터</span>
+          <span className="logo-sub">심심할 때 들르는 곳</span>
         </Link>
         <nav className="nav" aria-label="주요">
           {links.map((link) => (
