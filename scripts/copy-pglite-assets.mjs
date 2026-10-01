@@ -9,7 +9,8 @@ import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 
 const require = createRequire(import.meta.url);
-const dist = join(dirname(require.resolve("@electric-sql/pglite/package.json")), "dist");
+const entry = require.resolve("@electric-sql/pglite");
+const dist = dirname(entry);
 const dest = join(process.cwd(), ".vercel/output/functions/__server.func/_libs");
 
 if (!existsSync(dest)) {
