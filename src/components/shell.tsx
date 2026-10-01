@@ -6,7 +6,7 @@ const links = [
   { to: "/", label: "광장", exact: true },
   { to: "/share", label: "올리기", exact: false },
   { to: "/rank", label: "랭킹", exact: false },
-  { to: "/board", label: "이야기", exact: false },
+  { to: "/board", label: "게시판", exact: false },
   { to: "/prompts", label: "프롬프트", exact: false },
   { to: "/tips", label: "팁", exact: false },
 ] as const;

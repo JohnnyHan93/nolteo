@@ -405,6 +405,100 @@ footer.site {
 footer.site a { text-decoration: underline; text-underline-offset: 3px; }
 .keep { white-space: pre-wrap; }
 
+.board-page { display: grid; gap: 0.85rem; }
+.board-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; }
+.board-head .page-title { margin-bottom: 0.25rem; }
+.chip .count {
+  margin-left: 0.35rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+.board-tools { display: flex; align-items: center; gap: 0.75rem; }
+.board-tools input {
+  flex: 1;
+  border: 2px solid color-mix(in srgb, var(--color-fg) 55%, var(--color-bg));
+  border-radius: 0.8rem;
+  padding: 0.65rem 0.85rem;
+  background: transparent;
+  color: var(--color-fg);
+}
+.board-sheet {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-card);
+  overflow: auto;
+}
+.board-table { width: 100%; border-collapse: collapse; min-width: 36rem; }
+.board-table th, .board-table td {
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 14%, var(--color-surface));
+  white-space: nowrap;
+}
+.board-table th {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-ink) 62%, var(--color-surface));
+  background: color-mix(in srgb, var(--color-primary) 28%, var(--color-surface));
+}
+.board-table tbody tr:last-child td { border-bottom: 0; }
+.board-table .subject { white-space: normal; width: 52%; }
+.board-table .subject a { color: inherit; text-decoration: none; font-weight: 650; }
+.board-table .subject em {
+  margin-left: 0.35rem;
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 700;
+}
+.board-table .num, .board-table .when { color: color-mix(in srgb, var(--color-ink) 62%, var(--color-surface)); font-size: 0.85rem; }
+.board-tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  background: color-mix(in srgb, var(--color-primary) 55%, var(--color-surface));
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.board-empty { padding: 1rem 0.9rem; }
+.thread { display: grid; gap: 0.85rem; }
+.crumb { margin: 0; font-size: 0.85rem; }
+.crumb a { color: var(--color-primary); }
+.thread-head, .thread-body, .replies {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.1rem;
+}
+.thread-head h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0.45rem 0 0.8rem;
+}
+.thread-head dl { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin: 0; }
+.thread-head dl div { display: flex; gap: 0.4rem; font-size: 0.85rem; }
+.thread-head dt { color: color-mix(in srgb, var(--color-ink) 55%, var(--color-surface)); }
+.thread-head dd { margin: 0; font-weight: 700; }
+.thread-body { min-height: 8rem; line-height: 1.7; }
+.replies h2 { margin: 0 0 0.8rem; font-size: 1.05rem; }
+.replies ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.replies li {
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, var(--color-surface));
+  padding-top: 0.75rem;
+}
+.reply-meta { display: flex; align-items: baseline; gap: 0.45rem; font-size: 0.85rem; }
+.reply-meta b {
+  color: var(--color-accent);
+  min-width: 1.1rem;
+}
+.reply-meta time { color: color-mix(in srgb, var(--color-ink) 55%, var(--color-surface)); }
+.replies li p { margin: 0.35rem 0 0; }
+.reply-form { margin-top: 0.4rem; padding-top: 0.8rem; border-top: 2px solid var(--color-ink); }
+.reply-form h3 { margin: 0; }
+
 @media (max-width: 980px) {
   .grid, .rail { grid-template-columns: 1fr 1fr; }
 }
@@ -412,6 +506,7 @@ footer.site a { text-decoration: underline; text-underline-offset: 3px; }
   .top { align-items: stretch; flex-direction: column; gap: 0.6rem; }
   .nav { margin-left: 0; }
   .hero, .grid, .rail, .split, .rank { grid-template-columns: 1fr; }
+  .board-head { align-items: stretch; flex-direction: column; }
   .rank-actions { flex-direction: row; align-items: center; justify-content: space-between; }
   canvas.board { height: 18rem; }
   .wrap { width: min(70rem, calc(100% - 1.25rem)); }
