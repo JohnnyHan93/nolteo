@@ -43,7 +43,7 @@ function PostPage() {
           <div><dt>댓글</dt><dd>{comments.length}</dd></div>
         </dl>
       </header>
-      <div className="thread-body keep">{post.body}</div>
+      <div className="thread-body keep">{post.body.trim() ? post.body : "본문이 비어 있어요."}</div>
 
       <section className="replies" aria-label="댓글">
         <h2>댓글 {comments.length}</h2>

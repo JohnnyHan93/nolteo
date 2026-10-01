@@ -295,6 +295,8 @@ export const seedPrompts: PromptCard[] = [
   },
 ];
 
+export const SEED_PROMPT_IDS = new Set(seedPrompts.map((prompt) => prompt.id));
+
 export const seedTips: TipCard[] = [
   {
     id: "t1",
@@ -321,6 +323,8 @@ export const seedTips: TipCard[] = [
     created: "2026-09-26T05:00:00.000Z",
   },
 ];
+
+export const SEED_TIP_IDS = new Set(seedTips.map((tip) => tip.id));
 
 export const POST_TAGS = ["잡담", "홍보", "리뷰", "질문", "팁"] as const;
 

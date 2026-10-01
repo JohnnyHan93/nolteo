@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Outlet, createFileRoute, Link, useRouterState } from "@tanstack/react-router";
 import { useYard } from "@/components/yard";
 import { POST_TAGS } from "@/lib/yard/catalog";
 import { formatWhen } from "@/lib/yard/types";
@@ -35,6 +35,11 @@ function BoardPage() {
     });
     return filtered.map((post, index) => ({ post, no: filtered.length - index }));
   }, [posts, board, query]);
+
+  const onPost = useRouterState({
+    select: (state) => /^\/board\/[^/]+/.test(state.location.pathname),
+  });
+  if (onPost) return <Outlet />;
 
   return (
     <section className="board-page">

@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { CATALOG_IDS, POST_TAGS, SEED_POST_IDS } from "@/lib/yard/catalog";
+import { CATALOG_IDS, POST_TAGS, SEED_POST_IDS, SEED_PROMPT_IDS, SEED_TIP_IDS } from "@/lib/yard/catalog";
 import type { YardCategory } from "@/lib/yard/types";
 import {
   emptySnapshot,
@@ -274,10 +274,17 @@ async function countOf(table: "yard_posts" | "yard_comments" | "yard_reviews" | 
 }
 
 async function knownItem(id: string): Promise<boolean> {
-  if (CATALOG_IDS.has(id)) return true;
+  if (CATALOG_IDS.has(id) || SEED_PROMPT_IDS.has(id) || SEED_TIP_IDS.has(id)) return true;
   const { getSql } = await import("@/lib/db");
   const sql = await getSql();
-  const rows = await sql<{ id: string }>`select id from yard_extras where id = ${id}`;
+  const rows = await sql<{ id: string }>`
+    select id from yard_extras where id = ${id}
+    union all
+    select id from yard_prompts where id = ${id}
+    union all
+    select id from yard_tips where id = ${id}
+    limit 1
+  `;
   return rows.length > 0;
 }
 
