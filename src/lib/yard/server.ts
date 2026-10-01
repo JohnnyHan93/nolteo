@@ -326,7 +326,7 @@ export const createPost = createServerFn({ method: "POST" })
       const title = plain(data.title, 80);
       const body = plain(data.body, 2000, true);
       if (!title || !body) return await fail("제목과 내용을 적어 주세요");
-      if ((await countOf("yard_posts")) >= 400) return await fail("글이 가득 찼다. 잠시 뒤에 다시.");
+      if ((await countOf("yard_posts")) >= 400) return await fail("글이 가득 찼어요. 잠시 뒤에 다시 올려 주세요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       await sql`
@@ -336,7 +336,7 @@ export const createPost = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] post failed", error);
-      return fail("글을 올리지 못했다");
+      return fail("글을 올리지 못했어요");
     }
   });
 
@@ -349,8 +349,8 @@ export const createComment = createServerFn({ method: "POST" })
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       const found = await sql<{ id: string }>`select id from yard_posts where id = ${data.postId}`;
-      if (found.length === 0 && !SEED_POST_IDS.has(data.postId)) return await fail("글이 없다");
-      if ((await countOf("yard_comments")) >= 800) return await fail("의견이 가득 찼다.");
+      if (found.length === 0 && !SEED_POST_IDS.has(data.postId)) return await fail("이 글을 찾지 못했어요");
+      if ((await countOf("yard_comments")) >= 800) return await fail("의견이 가득 찼어요.");
       await sql`
         insert into yard_comments (id, post_id, nick, body)
         values (${crypto.randomUUID()}, ${data.postId}, ${nickOf(data.nick)}, ${body})
@@ -358,7 +358,7 @@ export const createComment = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] comment failed", error);
-      return fail("의견을 달지 못했다");
+      return fail("의견을 남기지 못했어요");
     }
   });
 
@@ -368,8 +368,8 @@ export const createReview = createServerFn({ method: "POST" })
     try {
       const text = plain(data.text, 1000, true);
       if (!text) return await fail("리뷰를 적어 주세요");
-      if (!(await knownItem(data.itemId))) return await fail("없는 놀이다");
-      if ((await countOf("yard_reviews")) >= 800) return await fail("리뷰가 가득 찼다.");
+      if (!(await knownItem(data.itemId))) return await fail("이 놀이를 찾지 못했어요");
+      if ((await countOf("yard_reviews")) >= 800) return await fail("리뷰가 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       await sql`
@@ -379,7 +379,7 @@ export const createReview = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] review failed", error);
-      return fail("리뷰를 남기지 못했다");
+      return fail("리뷰를 남기지 못했어요");
     }
   });
 
@@ -394,8 +394,8 @@ export const createExtra = createServerFn({ method: "POST" })
       const github = githubRaw ? httpUrl(githubRaw) : "";
       const nick = nickOf(data.nick);
       if (!title || !href) return await fail("이름과 http 주소를 적어 주세요");
-      if (githubRaw && !github) return await fail("깃허브 주소가 이상하다");
-      if ((await countOf("yard_extras")) >= 200) return await fail("올린 링크가 가득 찼다.");
+      if (githubRaw && !github) return await fail("깃허브 주소가 조금 이상해요");
+      if ((await countOf("yard_extras")) >= 200) return await fail("올린 링크가 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       const id = crypto.randomUUID();
@@ -419,7 +419,7 @@ export const createExtra = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] extra failed", error);
-      return fail("링크를 올리지 못했다");
+      return fail("링크를 올리지 못했어요");
     }
   });
 
@@ -431,7 +431,7 @@ export const createPrompt = createServerFn({ method: "POST" })
       const body = plain(data.body, 4000, true);
       const model = plain(data.model ?? "", 40) || "범용";
       if (!title || !body) return await fail("제목과 프롬프트를 적어 주세요");
-      if ((await countOf("yard_prompts")) >= 200) return await fail("프롬프트가 가득 찼다.");
+      if ((await countOf("yard_prompts")) >= 200) return await fail("프롬프트가 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       await sql`
@@ -441,7 +441,7 @@ export const createPrompt = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] prompt failed", error);
-      return fail("프롬프트를 올리지 못했다");
+      return fail("프롬프트를 올리지 못했어요");
     }
   });
 
@@ -454,8 +454,8 @@ export const createTip = createServerFn({ method: "POST" })
       const githubRaw = (data.github ?? "").trim();
       const github = githubRaw ? httpUrl(githubRaw) : "";
       if (!title || !body) return await fail("제목과 팁을 적어 주세요");
-      if (githubRaw && !github) return await fail("깃허브 주소가 이상하다");
-      if ((await countOf("yard_tips")) >= 200) return await fail("팁이 가득 찼다.");
+      if (githubRaw && !github) return await fail("깃허브 주소가 조금 이상해요");
+      if ((await countOf("yard_tips")) >= 200) return await fail("팁이 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
       await sql`
@@ -465,6 +465,6 @@ export const createTip = createServerFn({ method: "POST" })
       return { ok: true, snapshot: await loadSnapshot() };
     } catch (error) {
       console.error("[nolteo] tip failed", error);
-      return fail("팁을 올리지 못했다");
+      return fail("팁을 올리지 못했어요");
     }
   });

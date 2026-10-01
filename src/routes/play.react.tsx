@@ -39,14 +39,14 @@ function ReactPlay() {
   return (
     <section>
       <h1 className="page-title">반응속도</h1>
-      <p className="note">색이 바뀌기 전에 누르면 실격이다.</p>
+      <p className="note">색이 바뀌기 전에 누르면 반칙이에요. 초록으로 바뀌면 눌러 주세요.</p>
       <div className="play">
         {phase === "idle" ? <button type="button" className="hit wait" onClick={begin}>시작</button> : null}
         {phase === "wait" ? <button type="button" className="hit wait" onClick={hit}>기다리기</button> : null}
         {phase === "go" ? <button type="button" className="hit go" onClick={hit}>지금</button> : null}
         {phase === "early" ? (
           <div>
-            <p className="mega">너무 빨랐다</p>
+            <p className="mega">너무 빨랐어요</p>
             <button type="button" className="btn" onClick={begin}>다시</button>
           </div>
         ) : null}

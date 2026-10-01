@@ -14,10 +14,10 @@ const questions = [
 ];
 
 const results = [
-  { title: "창가형", body: "오래 앉아 보는 쪽이다. 소리보다 바깥이 맞다.", id: "window" },
-  { title: "한 판형", body: "시작과 끝이 있는 놀이가 맞다. 길어지면 닫는다.", id: "2048" },
-  { title: "일단클릭형", body: "설명을 읽기 전에 연다. 이상한 사이트가 맞다.", id: "useless" },
-  { title: "수집형", body: "하나 끝나면 옆 칸이 궁금하다. 조합이 길어도 남는다.", id: "little" },
+  { title: "창가형", body: "한참 앉아 보는 스타일이에요. 소리보다 창밖이 더 잘 맞아요.", id: "window" },
+  { title: "한 판형", body: "시작과 끝이 있는 놀이가 잘 맞아요. 길어지면 그냥 닫아도 돼요.", id: "2048" },
+  { title: "일단클릭형", body: "설명보다 먼저 열어 보는 쪽이에요. 이상한 사이트가 더 재미있을 거예요.", id: "useless" },
+  { title: "수집형", body: "하나 끝나면 옆 칸이 궁금한 쪽이에요. 조합이 길어도 남아요.", id: "little" },
 ];
 
 function PsychPlay() {
@@ -35,7 +35,7 @@ function PsychPlay() {
   return (
     <section>
       <h1 className="page-title">지금 심심 유형</h1>
-      <p className="note">의학이 아니다. 다음에 뭘 열지 고르는 여섯 질문.</p>
+      <p className="note">병원 검사가 아니에요. 다음에 뭘 열지 고르는 짧은 질문 여섯 개예요.</p>
       <div className="play">
         {!done && current ? (
           <div className="choices">

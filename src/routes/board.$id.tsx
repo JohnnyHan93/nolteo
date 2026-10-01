@@ -15,8 +15,8 @@ function PostPage() {
   if (!post) {
     return (
       <article className="panel">
-        <p>글이 없다.</p>
-        <Link to="/board">게시판으로</Link>
+        <p>이 글을 찾지 못했어요.</p>
+        <Link to="/board">게시판으로 돌아가기</Link>
       </article>
     );
   }
@@ -45,9 +45,9 @@ function PostPage() {
         }}
       >
         <input value={nick} onChange={(event) => setNick(event.target.value)} placeholder="별명" maxLength={24} aria-label="별명" />
-        <textarea rows={3} value={body} onChange={(event) => setBody(event.target.value)} placeholder="한 줄 의견" maxLength={1000} aria-label="의견" />
+        <textarea rows={3} value={body} onChange={(event) => setBody(event.target.value)} placeholder="한 줄만 적어도 좋아요" maxLength={1000} aria-label="의견" />
         {error ? <p className="error">{error}</p> : null}
-        <button className="btn" type="submit" disabled={busy}>달기</button>
+        <button className="btn" type="submit" disabled={busy}>의견 남기기</button>
       </form>
     </article>
   );

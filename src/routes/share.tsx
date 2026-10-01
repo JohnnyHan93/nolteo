@@ -31,11 +31,11 @@ function SharePage() {
         });
       }}
     >
-      <h1>놀이 올리기</h1>
-      <p className="note">주소만 올린다. 파일은 받지 않는다. 웹게임, 심리테스트, 낙서, 계산기, 만든 앱이 광장과 랭킹에 붙고, 리뷰를 받는다.</p>
+      <h1>내 놀이 올리기</h1>
+      <p className="note">파일은 받지 않아요. 주소만 올리면 광장과 순위에 바로 붙고, 다른 사람이 한 줄 리뷰를 남길 수 있어요.</p>
       <label className="field">
         <span>별명</span>
-        <input value={nick} onChange={(event) => setNick(event.target.value)} placeholder="비우면 익명" maxLength={24} />
+        <input value={nick} onChange={(event) => setNick(event.target.value)} placeholder="비워도 돼요. 익명으로 올라가요" maxLength={24} />
       </label>
       <label className="field">
         <span>이름</span>
@@ -47,7 +47,7 @@ function SharePage() {
       </label>
       <label className="field">
         <span>한 줄</span>
-        <input value={blurb} onChange={(event) => setBlurb(event.target.value)} maxLength={200} placeholder="무슨 놀이인지" />
+        <input value={blurb} onChange={(event) => setBlurb(event.target.value)} maxLength={200} placeholder="어떤 놀이인지 한 줄로" />
       </label>
       <label className="field">
         <span>분류</span>
@@ -59,11 +59,11 @@ function SharePage() {
       </label>
       <label className="field">
         <span>깃허브</span>
-        <input value={github} onChange={(event) => setGithub(event.target.value)} placeholder="없으면 비워 둠" maxLength={300} />
+        <input value={github} onChange={(event) => setGithub(event.target.value)} placeholder="없으면 비워 두세요" maxLength={300} />
       </label>
       {error ? <p className="error">{error}</p> : null}
-      <button className="btn" type="submit" disabled={busy}>광장에 넣기</button>
-      {done ? <p>넣었다. <Link to="/">광장</Link> 맨 앞에서 보인다.</p> : null}
+      <button className="btn" type="submit" disabled={busy}>광장에 올리기</button>
+      {done ? <p>올렸어요. <Link to="/">광장</Link> 맨 앞에서 바로 보여요.</p> : null}
     </form>
   );
 }

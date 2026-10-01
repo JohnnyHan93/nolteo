@@ -16,8 +16,8 @@ function BoardPage() {
   return (
     <div className="split">
       <section>
-        <h1 className="page-title">익명 게시판</h1>
-        <p className="note">로그인 없다. 별명만 적고, 홍보·리뷰·질문·팁을 남긴다.</p>
+        <h1 className="page-title">이야기 게시판</h1>
+        <p className="note">로그인은 없어요. 별명만 적고 홍보, 리뷰, 질문, 팁을 남겨 보세요.</p>
         {posts.map((post) => (
           <Link key={post.id} to="/board/$id" params={{ id: post.id }} className="post">
             <div className="soft">{post.tag} · {post.nick} · {formatWhen(post.created)}</div>
@@ -41,7 +41,7 @@ function BoardPage() {
         <h2>글쓰기</h2>
         <label className="field">
           <span>별명</span>
-          <input value={nick} onChange={(event) => setNick(event.target.value)} placeholder="비우면 익명" maxLength={24} />
+          <input value={nick} onChange={(event) => setNick(event.target.value)} placeholder="비워도 돼요. 익명으로 올라가요" maxLength={24} />
         </label>
         <label className="field">
           <span>분류</span>
@@ -58,7 +58,7 @@ function BoardPage() {
           <textarea rows={6} value={body} onChange={(event) => setBody(event.target.value)} maxLength={2000} required />
         </label>
         {error ? <p className="error">{error}</p> : null}
-        <button className="btn" type="submit" disabled={busy}>올리기</button>
+        <button className="btn" type="submit" disabled={busy}>글 올리기</button>
       </form>
     </div>
   );

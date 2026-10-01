@@ -30,7 +30,7 @@ function PickPlay() {
   return (
     <section>
       <h1 className="page-title">결정 룰렛</h1>
-      <p className="note">한 줄에 하나. 서버로는 안 보낸다.</p>
+      <p className="note">한 줄에 하나씩 적으면 돼요. 이 목록은 서버로 보내지 않아요.</p>
       <div className="split">
         <label className="field">
           <span>후보</span>
@@ -38,7 +38,7 @@ function PickPlay() {
         </label>
         <div className="play">
           <div>
-            <p className={spinning ? "pick-result spin" : "pick-result"}>{result || "아직"}</p>
+            <p className={spinning ? "pick-result spin" : "pick-result"}>{result || "아직이에요"}</p>
             <button type="button" className="btn" onClick={spin} disabled={spinning}>돌리기</button>
           </div>
         </div>

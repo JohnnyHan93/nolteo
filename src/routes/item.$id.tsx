@@ -18,8 +18,8 @@ function ItemPage() {
   if (!item) {
     return (
       <article className="panel">
-        <p>없는 놀이다.</p>
-        <Link to="/">놀이로</Link>
+        <p>이 놀이를 찾지 못했어요.</p>
+        <Link to="/">광장으로 돌아가기</Link>
       </article>
     );
   }
@@ -30,7 +30,7 @@ function ItemPage() {
 
   return (
     <article className="panel stack">
-      <Link to="/">놀이로</Link>
+      <Link to="/">광장으로</Link>
       <div className="soft">{item.by} · 오늘 {item.stats.day.toLocaleString("ko-KR")}회{average ? ` · 리뷰 ${average}` : ""}</div>
       <h1>{item.title}</h1>
       <p>{item.blurb}</p>
@@ -40,7 +40,7 @@ function ItemPage() {
       </p>
       {item.github ? <p><a href={item.github} target="_blank" rel="noreferrer">깃허브</a></p> : null}
       <h3>리뷰</h3>
-      {reviews.length === 0 ? <p className="note">아직 리뷰가 없다.</p> : null}
+      {reviews.length === 0 ? <p className="note">아직 리뷰가 없어요. 첫 느낌을 남겨 주세요.</p> : null}
       {reviews.map((review) => (
         <div key={review.id} className="post">
           <b>{review.nick} · {review.score}점</b>
@@ -61,7 +61,7 @@ function ItemPage() {
         <select value={score} onChange={(event) => setScore(Number(event.target.value))} aria-label="점수">
           {[5, 4, 3, 2, 1].map((n) => <option key={n} value={n}>{n}점</option>)}
         </select>
-        <textarea rows={3} value={text} onChange={(event) => setText(event.target.value)} placeholder="해본 느낌" maxLength={1000} aria-label="리뷰" />
+        <textarea rows={3} value={text} onChange={(event) => setText(event.target.value)} placeholder="해 본 느낌을 적어 주세요" maxLength={1000} aria-label="리뷰" />
         {error ? <p className="error">{error}</p> : null}
         <button className="btn" type="submit" disabled={busy}>리뷰 남기기</button>
       </form>

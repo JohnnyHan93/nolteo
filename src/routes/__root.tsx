@@ -19,10 +19,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "놀터 — 킬링타임 놀이터" },
+      { title: "놀터 — 심심할 때 들르는 곳" },
       {
         name: "description",
-        content: "웹게임, 심리테스트, 낙서, 계산기, 만든 앱 주소를 올리고 들어간 횟수로 순위를 매기는 공유 놀이터.",
+        content: "웹게임, 심리테스트, 낙서, 계산기, 직접 만든 앱 주소를 올리고 같이 순위를 매기는 놀이터예요.",
       },
       { name: "theme-color", content: "#16130f" },
     ],

@@ -27,7 +27,7 @@ function MinutePlay() {
       <div className="play">
         <div>
           <div className="timer-num">{left}</div>
-          <p>{left === 0 ? "됐다." : "60초만 비운다."}</p>
+          <p>{left === 0 ? "잘 쉬었어요." : "60초만 비워 봐요."}</p>
           <button
             type="button"
             className="btn"

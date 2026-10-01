@@ -87,10 +87,10 @@ export function YardProvider({ initial, children }: { initial: Snapshot; childre
     try {
       const result = await work();
       if (!result.snapshot.degraded) setSnapshot(result.snapshot);
-      if (!result.ok) setError(result.message ?? "저장하지 못했다");
+      if (!result.ok) setError(result.message ?? "저장하지 못했어요");
       return result.ok;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "저장하지 못했다");
+      setError(err instanceof Error ? err.message : "저장하지 못했어요");
       return false;
     } finally {
       setBusy(false);

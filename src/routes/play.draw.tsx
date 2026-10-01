@@ -96,7 +96,7 @@ function DrawPlay() {
         onPointerUp={() => { drawing.current = false; }}
         onPointerLeave={() => { drawing.current = false; }}
       />
-      <p className="note">이 탭을 벗어나면 그림은 지워진다.</p>
+      <p className="note">이 탭을 떠나면 그림은 사라져요. 따로 저장되지는 않아요.</p>
     </section>
   );
 }

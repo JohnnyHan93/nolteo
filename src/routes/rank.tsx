@@ -20,7 +20,7 @@ function RankPage() {
   return (
     <>
       <h1 className="page-title">인기 놀이</h1>
-      <p className="note">사람들이 올린 주소다. 서울 시간으로 오늘·이번 주·이번 달이 갈리고, 들어간 횟수가 같이 쌓인다.</p>
+      <p className="note">사람들이 올린 주소예요. 서울 시간으로 오늘, 이번 주, 이번 달이 나뉘고, 들어갈 때마다 횟수가 쌓여요.</p>
       <div className="tabs">
         {periods.map((item) => (
           <button
