@@ -4,7 +4,15 @@ import { useYard } from "@/components/yard";
 import { POST_TAGS } from "@/lib/yard/catalog";
 import { formatWhen } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/board")({ component: BoardPage });
+export const Route = createFileRoute("/board")({
+  head: () => ({
+    meta: [
+      { title: "게시판 — 놀터" },
+      { name: "description", content: "놀터 게시판. 잡담, 홍보, 리뷰, 질문, 팁을 올리고 댓글을 남겨요." },
+    ],
+  }),
+  component: BoardPage,
+});
 
 const boards = [
   { id: "all", label: "전체", blurb: "올라온 글을 한곳에서 봐요." },

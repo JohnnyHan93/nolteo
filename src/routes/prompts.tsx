@@ -3,7 +3,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useYard } from "@/components/yard";
 import { ZERO } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/prompts")({ component: PromptsPage });
+export const Route = createFileRoute("/prompts")({
+  head: () => ({
+    meta: [
+      { title: "AI 프롬프트 순위 — 놀터" },
+      { name: "description", content: "놀터에 모인 AI 프롬프트. 오늘·이번 주·이번 달 열어 본 순위로 봐요." },
+    ],
+  }),
+  component: PromptsPage,
+});
 
 const periods = [
   { id: "day", label: "오늘" },

@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/play/minute")({ component: MinutePlay });
+export const Route = createFileRoute("/play/minute")({
+  head: () => ({
+    meta: [
+      { title: "1분 — 놀터" },
+      { name: "description", content: "놀터의 1분 타이머예요. 심심할 때 한 번만 재 봐요." },
+    ],
+  }),
+  component: MinutePlay,
+});
 
 function MinutePlay() {
   const [left, setLeft] = useState(60);

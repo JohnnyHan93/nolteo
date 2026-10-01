@@ -4,7 +4,15 @@ import { useYard } from "@/components/yard";
 import { shareCategories } from "@/lib/yard/catalog";
 import type { YardCategory } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/share")({ component: SharePage });
+export const Route = createFileRoute("/share")({
+  head: () => ({
+    meta: [
+      { title: "놀이 올리기 — 놀터" },
+      { name: "description", content: "만든 웹게임, 심리테스트, 도구 주소를 놀터 광장에 올려요." },
+    ],
+  }),
+  component: SharePage,
+});
 
 function SharePage() {
   const { addExtra, busy, error } = useYard();

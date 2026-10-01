@@ -1,9 +1,24 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useYard } from "@/components/yard";
+import { seedPosts } from "@/lib/yard/catalog";
 import { formatWhen } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/board/$id")({ component: PostPage });
+export const Route = createFileRoute("/board/$id")({
+  head: ({ params }) => {
+    const post = seedPosts.find((item) => item.id === params.id);
+    return {
+      meta: [
+        { title: post ? `${post.title} — 놀터 게시판` : "게시글 — 놀터" },
+        {
+          name: "description",
+          content: post ? post.body.slice(0, 140) : "놀터 게시판에 올라온 글이에요.",
+        },
+      ],
+    };
+  },
+  component: PostPage,
+});
 
 function PostPage() {
   const { id } = Route.useParams();

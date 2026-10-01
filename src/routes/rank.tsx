@@ -3,7 +3,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { AdSlot } from "@/components/ad-slot";
 import { useYard } from "@/components/yard";
 
-export const Route = createFileRoute("/rank")({ component: RankPage });
+export const Route = createFileRoute("/rank")({
+  head: () => ({
+    meta: [
+      { title: "인기 놀이 순위 — 놀터" },
+      { name: "description", content: "놀터 인기 놀이. 오늘, 이번 주, 이번 달, 전체 순위를 봐요." },
+    ],
+  }),
+  component: RankPage,
+});
 
 const periods = [
   { id: "day", label: "오늘" },

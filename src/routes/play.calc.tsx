@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/play/calc")({ component: CalcPlay });
+export const Route = createFileRoute("/play/calc")({
+  head: () => ({
+    meta: [
+      { title: "계산기 — 놀터" },
+      { name: "description", content: "놀터에서 바로 쓰는 작은 계산기예요." },
+    ],
+  }),
+  component: CalcPlay,
+});
 
 function evaluate(src: string): string {
   const expr = src.replace(/\s/g, "");

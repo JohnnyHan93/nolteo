@@ -2,7 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/play/draw")({ component: DrawPlay });
+export const Route = createFileRoute("/play/draw")({
+  head: () => ({
+    meta: [
+      { title: "낙서 — 놀터" },
+      { name: "description", content: "놀터에서 바로 그리는 짧은 낙서예요." },
+    ],
+  }),
+  component: DrawPlay,
+});
 
 type Ink = "fg" | "accent" | "go";
 

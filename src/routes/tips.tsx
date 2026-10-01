@@ -4,7 +4,15 @@ import { useYard } from "@/components/yard";
 import { useOwner } from "@/lib/owner";
 import { ZERO } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/tips")({ component: TipsPage });
+export const Route = createFileRoute("/tips")({
+  head: () => ({
+    meta: [
+      { title: "만드는 팁 순위 — 놀터" },
+      { name: "description", content: "놀터에 모인 만드는 팁. 오늘·이번 주·이번 달 열어 본 순위로 봐요." },
+    ],
+  }),
+  component: TipsPage,
+});
 
 const periods = [
   { id: "day", label: "오늘" },

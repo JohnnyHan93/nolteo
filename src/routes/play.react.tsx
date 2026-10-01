@@ -1,7 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/play/react")({ component: ReactPlay });
+export const Route = createFileRoute("/play/react")({
+  head: () => ({
+    meta: [
+      { title: "반응 속도 — 놀터" },
+      { name: "description", content: "화면이 바뀌면 눌러 보는 놀터의 짧은 반응 놀이예요." },
+    ],
+  }),
+  component: ReactPlay,
+});
 
 type Phase = "idle" | "wait" | "go" | "early" | "done";
 

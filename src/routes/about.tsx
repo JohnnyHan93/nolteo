@@ -1,6 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/about")({ component: AboutPage });
+export const Route = createFileRoute("/about")({
+  head: () => ({
+    meta: [
+      { title: "놀터 소개" },
+      { name: "description", content: "놀터는 누군가 만든 웹게임과 테스트를 같이 구경하는 공유 놀이터예요." },
+    ],
+  }),
+  component: AboutPage,
+});
 
 function AboutPage() {
   return (

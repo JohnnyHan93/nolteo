@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/play/pick")({ component: PickPlay });
+export const Route = createFileRoute("/play/pick")({
+  head: () => ({
+    meta: [
+      { title: "아무거나 고르기 — 놀터" },
+      { name: "description", content: "줄마다 적어 두면 놀터가 하나를 골라 줘요." },
+    ],
+  }),
+  component: PickPlay,
+});
 
 function PickPlay() {
   const [text, setText] = useState("커피\n산책\n낮잠\n아무 링크");

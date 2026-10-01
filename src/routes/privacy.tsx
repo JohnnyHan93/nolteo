@@ -1,7 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { OWNER_MAIL } from "@/lib/owner";
 
-export const Route = createFileRoute("/privacy")({ component: PrivacyPage });
+export const Route = createFileRoute("/privacy")({
+  head: () => ({
+    meta: [
+      { title: "개인정보 — 놀터" },
+      { name: "description", content: "놀터는 회원 가입 없이 별명과 글, 클릭 수만 저장해요." },
+    ],
+  }),
+  component: PrivacyPage,
+});
 
 function PrivacyPage() {
   return (

@@ -1,10 +1,21 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useYard } from "@/components/yard";
-import { hostOf } from "@/lib/yard/catalog";
+import { catalogItems, hostOf } from "@/lib/yard/catalog";
 import { formatWhen } from "@/lib/yard/types";
 
-export const Route = createFileRoute("/item/$id")({ component: ItemPage });
+export const Route = createFileRoute("/item/$id")({
+  head: ({ params }) => {
+    const item = catalogItems.find((entry) => entry.id === params.id);
+    return {
+      meta: [
+        { title: item ? `${item.title} — 놀터` : "놀이 — 놀터" },
+        { name: "description", content: item?.blurb ?? "놀터에 올라온 놀이예요." },
+      ],
+    };
+  },
+  component: ItemPage,
+});
 
 function ItemPage() {
   const { id } = Route.useParams();

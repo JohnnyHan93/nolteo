@@ -2,7 +2,15 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useYard } from "@/components/yard";
 
-export const Route = createFileRoute("/play/psych")({ component: PsychPlay });
+export const Route = createFileRoute("/play/psych")({
+  head: () => ({
+    meta: [
+      { title: "지금 심심 유형 — 놀터" },
+      { name: "description", content: "여섯 개 질문으로 다음에 열 놀이를 골라 줘요. 병원 검사가 아니에요." },
+    ],
+  }),
+  component: PsychPlay,
+});
 
 const questions = [
   { q: "쉬는 10분, 뭐부터?", a: "창밖", b: "피드" },
