@@ -220,6 +220,8 @@
 }
 .card:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--color-primary); }
 .meta, .row { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.row { flex-wrap: wrap; }
+.row .soft { min-width: 0; }
 .meta { font-size: 0.75rem; }
 .stamp {
   background: var(--color-accent);

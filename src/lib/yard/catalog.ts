@@ -211,6 +211,87 @@ const shelf: Array<Omit<CatalogItem, "by">> = [
     href: "https://regex101.com",
     tags: ["개발"],
   },
+  {
+    id: "here-psych",
+    title: "지금 심심 유형",
+    blurb: "질문 여섯 개로 다음에 뭘 열지 골라 줘요. 검사는 아니에요.",
+    category: "psych",
+    kind: "내부",
+    href: "/play/psych",
+    tags: ["여기", "짧게"],
+  },
+  {
+    id: "here-react",
+    title: "반응 속도",
+    blurb: "화면이 바뀌면 바로 누르는 한 판.",
+    category: "psych",
+    kind: "내부",
+    href: "/play/react",
+    tags: ["여기", "속도"],
+  },
+  {
+    id: "here-draw",
+    title: "낙서판",
+    blurb: "저장 없이 화면에 긋는 낙서.",
+    category: "draw",
+    kind: "내부",
+    href: "/play/draw",
+    tags: ["여기", "그림"],
+  },
+  {
+    id: "here-calc",
+    title: "계산기",
+    blurb: "설치 없이 바로 두드리는 계산기.",
+    category: "calc",
+    kind: "내부",
+    href: "/play/calc",
+    tags: ["여기"],
+  },
+  {
+    id: "here-minute",
+    title: "1분",
+    blurb: "60초만 재는 타이머.",
+    category: "tool",
+    kind: "내부",
+    href: "/play/minute",
+    tags: ["여기", "시간"],
+  },
+  {
+    id: "here-pick",
+    title: "아무거나 고르기",
+    blurb: "한 줄에 하나씩 적으면 그중 하나를 골라 줘요.",
+    category: "tool",
+    kind: "내부",
+    href: "/play/pick",
+    tags: ["여기"],
+  },
+  {
+    id: "hangul",
+    title: "한글 타자",
+    blurb: "한국어 문장으로 타자 속도를 재요.",
+    category: "tool",
+    kind: "외부",
+    href: "https://10fastfingers.com/typing-test/korean",
+    tags: ["타자", "한글"],
+  },
+  {
+    id: "silk",
+    title: "실크 그리기",
+    blurb: "손가락을 끌면 선이 실처럼 남아요.",
+    category: "draw",
+    kind: "외부",
+    href: "https://weavesilk.com",
+    tags: ["그림"],
+  },
+  {
+    id: "sand",
+    title: "모래 상자",
+    blurb: "모래, 물, 불을 화면에 떨어뜨려요.",
+    category: "game",
+    kind: "외부",
+    href: "https://sandspiel.club",
+    tags: ["모래"],
+  },
 ];
 
 export const catalogItems: CatalogItem[] = shelf.map((item, index) => ({
@@ -264,6 +345,15 @@ export const seedPosts: Post[] = [
       },
     ],
   },
+  {
+    id: "p4",
+    nick: "익명의 고양이",
+    tag: "팁",
+    title: "주소는 한 번 열어 보고 올리세요",
+    body: "올린 뒤에 안 열리면 찾는 사람만 헤매요. 시크릿 창에서 들어가 보고, 가입해야 열리면 그 사실을 한 줄로 적어 두세요.",
+    created: "2026-10-02T01:10:00.000Z",
+    comments: [],
+  },
 ];
 
 export const SEED_POST_IDS = new Set(seedPosts.map((post) => post.id));
@@ -302,7 +392,7 @@ export const seedTips: TipCard[] = [
     id: "t1",
     title: "바이브 코딩은 화면부터 고정한다",
     body: "기능 목록보다 첫 화면의 빈 상태를 먼저 그린다. 빈 상태가 있으면 데이터 없어도 배포할 수 있다.",
-    github: "https://github.com",
+    github: "",
     nick: "익명의 너구리",
     created: "2026-09-26T01:00:00.000Z",
   },
@@ -318,9 +408,17 @@ export const seedTips: TipCard[] = [
     id: "t3",
     title: "클릭은 떠나기 전에 센다",
     body: "새 탭을 열기 전에 카운트를 올리면 이탈해도 지표가 남는다. 일간 숫자는 서울 날짜가 바뀌면 다시 0부터 쌓인다.",
-    github: "https://github.com",
+    github: "",
     nick: "익명의 문어",
     created: "2026-09-26T05:00:00.000Z",
+  },
+  {
+    id: "t4",
+    title: "링크는 열어 보고 올리기",
+    body: "주소를 올리기 전에 시크릿 창에서 한 번 들어가 보세요. 안 열리거나 가입해야 하면, 그 사실을 소개 한 줄에 적어 두면 다음 사람이 덜 헤매요.",
+    github: "",
+    nick: "익명의 고양이",
+    created: "2026-10-02T01:20:00.000Z",
   },
 ];
 
@@ -329,6 +427,7 @@ export const SEED_TIP_IDS = new Set(seedTips.map((tip) => tip.id));
 export const POST_TAGS = ["잡담", "홍보", "리뷰", "질문", "팁"] as const;
 
 export function hostOf(href: string): string {
+  if (href.startsWith("/")) return "놀터";
   try {
     return new URL(href).host.replace(/^www\./, "");
   } catch {

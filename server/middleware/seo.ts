@@ -84,7 +84,7 @@ export default async function seoMiddleware(
         headers: { "content-type": "text/plain; charset=utf-8" },
       });
     }
-    const today = "2026-10-01";
+    const today = "2026-10-02";
     const urls = PATHS.map(
       (item) => `  <url><loc>${origin}${item}</loc><lastmod>${today}</lastmod></url>`,
     ).join("\n");
