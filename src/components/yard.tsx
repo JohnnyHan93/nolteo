@@ -49,7 +49,7 @@ export function YardProvider({ initial, children }: { initial: Snapshot; childre
   }, [path]);
 
   const catalog = useMemo<ScoredItem[]>(() => {
-    const extras: CatalogItem[] = snapshot.extras.map((item) => ({
+    const extras: CatalogItem[] = snapshot.extras.filter((item) => item.title.trim() && item.href.trim()).map((item) => ({
       id: item.id,
       title: item.title,
       blurb: item.blurb,
@@ -67,7 +67,7 @@ export function YardProvider({ initial, children }: { initial: Snapshot; childre
   }, [snapshot]);
 
   const posts = useMemo(() => {
-    const fresh = [...seedPosts, ...snapshot.posts].map((post) => ({
+    const fresh = [...seedPosts, ...snapshot.posts].filter((post) => post.title.trim()).map((post) => ({
       ...post,
       comments: mergeComments(post.comments, snapshot.buckets[post.id] ?? []),
     }));
@@ -76,10 +76,10 @@ export function YardProvider({ initial, children }: { initial: Snapshot; childre
   }, [snapshot]);
 
   const prompts = useMemo(
-    () => [...snapshot.prompts, ...seedPrompts],
+    () => [...snapshot.prompts, ...seedPrompts].filter((prompt) => prompt.title.trim()),
     [snapshot.prompts],
   );
-  const tips = useMemo(() => [...snapshot.tips, ...seedTips], [snapshot.tips]);
+  const tips = useMemo(() => [...snapshot.tips, ...seedTips].filter((tip) => tip.title.trim()), [snapshot.tips]);
 
   async function commit(work: () => Promise<{ ok: boolean; message?: string; snapshot: Snapshot }>) {
     setBusy(true);

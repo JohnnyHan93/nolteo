@@ -94,6 +94,19 @@ function httpUrl(value: string): string | null {
   }
 }
 
+
+function githubLink(value: string): string | null {
+  const url = httpUrl(value);
+  if (!url) return null;
+  const parsed = new URL(url);
+  const host = parsed.hostname.replace(/^www\./, "").toLowerCase();
+  if (host !== "github.com") return url;
+  const parts = parsed.pathname.split("/").filter(Boolean);
+  if (parts.length < 2) return null;
+  if (["settings", "explore", "marketplace", "topics", "login", "signup"].includes(parts[0])) return null;
+  return url;
+}
+
 type ClickRow = {
   item_id: string;
   day_count: number;
@@ -203,7 +216,7 @@ async function loadSnapshot(): Promise<Snapshot> {
     title: row.title,
     href: row.href,
     blurb: row.blurb,
-    github: row.github,
+    github: row.github ? githubLink(row.github) ?? "" : "",
     category: isCategory(row.category) ? row.category : "made",
     nick: row.nick || "익명",
     created: row.created_at,
@@ -223,7 +236,7 @@ async function loadSnapshot(): Promise<Snapshot> {
     nick: row.nick,
     title: row.title,
     body: row.body,
-    github: row.github,
+    github: row.github ? githubLink(row.github) ?? "" : "",
     created: row.created_at,
   }));
 
@@ -398,10 +411,10 @@ export const createExtra = createServerFn({ method: "POST" })
       const href = httpUrl(data.href);
       const blurb = plain(data.blurb ?? "", 200) || "직접 올린 놀이";
       const githubRaw = (data.github ?? "").trim();
-      const github = githubRaw ? httpUrl(githubRaw) : "";
+      const github = githubRaw ? githubLink(githubRaw) : "";
       const nick = nickOf(data.nick);
       if (!title || !href) return await fail("이름과 http 주소를 적어 주세요");
-      if (githubRaw && !github) return await fail("깃허브 주소가 조금 이상해요");
+      if (githubRaw && !github) return await fail("깃허브 저장소 주소를 적어 주세요. 홈 주소는 빼 주세요.");
       if ((await countOf("yard_extras")) >= 200) return await fail("올린 링크가 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();
@@ -459,9 +472,9 @@ export const createTip = createServerFn({ method: "POST" })
       const title = plain(data.title, 80);
       const body = plain(data.body, 2000, true);
       const githubRaw = (data.github ?? "").trim();
-      const github = githubRaw ? httpUrl(githubRaw) : "";
+      const github = githubRaw ? githubLink(githubRaw) : "";
       if (!title || !body) return await fail("제목과 팁을 적어 주세요");
-      if (githubRaw && !github) return await fail("깃허브 주소가 조금 이상해요");
+      if (githubRaw && !github) return await fail("깃허브 저장소 주소를 적어 주세요. 홈 주소는 빼 주세요.");
       if ((await countOf("yard_tips")) >= 200) return await fail("팁이 가득 찼어요.");
       const { getSql } = await import("@/lib/db");
       const sql = await getSql();

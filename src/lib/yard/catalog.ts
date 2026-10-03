@@ -159,11 +159,11 @@ const shelf: Array<Omit<CatalogItem, "by">> = [
   },
   {
     id: "agar",
-    title: "agar.io",
-    blurb: "동그라미를 키우는 짧은 판.",
+    title: "mope.io",
+    blurb: "작은 생물을 키우는 짧은 판이에요. agar.io가 안 열려서 같은 취지로 바꿔 두었어요.",
     category: "flash",
     kind: "외부",
-    href: "https://agar.io",
+    href: "https://mope.io",
     tags: ["멀티"],
   },
   {
@@ -292,6 +292,33 @@ const shelf: Array<Omit<CatalogItem, "by">> = [
     href: "https://sandspiel.club",
     tags: ["모래"],
   },
+  {
+    id: "kkutu",
+    title: "끄투코리아",
+    blurb: "끝말잇기 웹게임이에요. 한글 단어로 바로 이어 붙일 수 있어요.",
+    category: "game",
+    kind: "외부",
+    href: "https://kkutu.co.kr",
+    tags: ["한글", "멀티"],
+  },
+  {
+    id: "semantle",
+    title: "꼬맨틀",
+    blurb: "정답 단어와 비슷한 말을 맞춰 가는 하루 한 판이에요.",
+    category: "flash",
+    kind: "외부",
+    href: "https://semantle-ko.newsjel.ly",
+    tags: ["한글", "단어"],
+  },
+  {
+    id: "snake",
+    title: "스네이크",
+    blurb: "사과를 먹고 길어지는 짧은 한 판이에요. 설치가 없어요.",
+    category: "flash",
+    kind: "외부",
+    href: "https://playsnake.org",
+    tags: ["짧은"],
+  },
 ];
 
 export const catalogItems: CatalogItem[] = shelf.map((item, index) => ({
@@ -352,6 +379,15 @@ export const seedPosts: Post[] = [
     title: "주소는 한 번 열어 보고 올리세요",
     body: "올린 뒤에 안 열리면 찾는 사람만 헤매요. 시크릿 창에서 들어가 보고, 가입해야 열리면 그 사실을 한 줄로 적어 두세요.",
     created: "2026-10-02T01:10:00.000Z",
+    comments: [],
+  },
+  {
+    id: "p5",
+    nick: "익명의 비둘기",
+    tag: "홍보",
+    title: "이번 주에 한글 놀이 세 칸을 더 붙였어요",
+    body: "끄투코리아, 꼬맨틀, 스네이크를 광장에 올려 두었어요. agar.io는 지금 막혀서, 같은 느낌의 mope.io로 바꿔 두었어요. 들어가기 전에 한 번만 눌러 보세요.",
+    created: "2026-10-03T12:00:00.000Z",
     comments: [],
   },
 ];
@@ -419,6 +455,14 @@ export const seedTips: TipCard[] = [
     github: "",
     nick: "익명의 고양이",
     created: "2026-10-02T01:20:00.000Z",
+  },
+  {
+    id: "t5",
+    title: "한글 놀이는 로그인 칸을 먼저 보세요",
+    body: "끄투처럼 구경은 바로 되지만, 방은 로그인이 필요한 곳이 있어요. 주소가 열려도 바로 한 판이 안 되면, 소개 한 줄에 그 점을 적어 두면 다음 사람이 덜 헤매요.",
+    github: "",
+    nick: "익명의 여우",
+    created: "2026-10-03T12:10:00.000Z",
   },
 ];
 
