@@ -159,11 +159,11 @@ const shelf: Array<Omit<CatalogItem, "by">> = [
   },
   {
     id: "slither",
-    title: "slither.io",
-    blurb: "원을 먹으며 길어지는 짧은 판. agar.io가 안 열려서 같은 취지로 바꿨었어요.",
+    title: "mope.io",
+    blurb: "작은 생물을 키우는 짧은 판이에요. agar.io가 안 열리고 slither.io도 다른 주소로 튀어서, 같은 취지로 바꿔 두었어요.",
     category: "flash",
     kind: "외부",
-    href: "https://slither.io",
+    href: "https://mope.io",
     tags: ["멀티"],
   },
   {
@@ -319,6 +319,15 @@ const shelf: Array<Omit<CatalogItem, "by">> = [
     href: "https://www.google.com/fbx?fbx=snake_arcade",
     tags: ["짧게"],
   },
+  {
+    id: "kkutu",
+    title: "끄투코리아",
+    blurb: "끝말잇기 웹게임이에요. 한글 단어로 바로 이어 붙일 수 있어요.",
+    category: "game",
+    kind: "외부",
+    href: "https://kkutu.co.kr",
+    tags: ["한글", "멀티"],
+  },
 ];
 
 export const catalogItems: CatalogItem[] = shelf.map((item, index) => ({
@@ -455,6 +464,14 @@ export const seedTips: TipCard[] = [
     github: "",
     nick: "익명의 고양이",
     created: "2026-10-02T01:20:00.000Z",
+  },
+  {
+    id: "t5",
+    title: "한글 놀이는 로그인 칸을 먼저 보세요",
+    body: "끄투처럼 구경은 바로 되지만, 방은 로그인이 필요한 곳이 있어요. 주소가 열려도 바로 한 판이 안 되면, 소개 한 줄에 그 점을 적어 두면 다음 사람이 덜 헤매요.",
+    github: "",
+    nick: "익명의 여우",
+    created: "2026-10-03T13:20:00.000Z",
   },
 ];
 
